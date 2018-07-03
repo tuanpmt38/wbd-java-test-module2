@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/layout.html}">
+<head>
+    <meta charset="UTF-8">
+    <title>edit page</title>
+</head>
+<body>
+<section layout:fragment="content">
+    <h2>Edit Employee</h2>
+    <th:block th:if="${message}">
+        <p th:text="${message}"></p>
+    </th:block>
+    <form action="" th:object="${employee}" method="post">
+        <input type="hidden" th:field="*{id}">
+        <div class="form-group">
+            <lable>Ma nhan vien</lable>
+            <input type="text" class="form-control" th:field="*{card}">
+        </div>
+        <div class="form-group">
+            <lable>Ho ten</lable>
+            <input type="text" class="form-control" th:field="*{name}">
+        </div>
+        <div class="form-group">
+            <lable>So dien thoai</lable>
+            <input type="text" class="form-control" th:field="*{phone}">
+        </div>
+        <div class="form-group">
+            <lable>Ngay sinh</lable>
+            <input type="text" class="form-control" th:field="*{birthday}">
+        </div>
+        <div class="form-group">
+            <lable>Dia chi</lable>
+            <input type="text" class="form-control" th:field="*{address}">
+        </div>
+        <div class="form-group">
+            <lable>Email</lable>
+            <input type="text" class="form-control" th:field="*{email}">
+        </div>
+        <div class="form-group">
+            <lable>Gioi tinh</lable>
+            <select value="" th:field="*{gender}" >
+                <div>
+                    <option disabled="true" selected="selected" value="">Select</option>
+                    <option value="Nam">Nam</option>
+                    <option value="Nu">Nu</option>
+                </div>
+            </select>
+        </div>
+        <div class="form-group">
+            <lable>Nhom nhan vien</lable>
+            <select value="" th:field="*{groupEmployee}" >
+                <option name="" id="" th:each="c : ${groupEmployees}" th:value="${c.id}" th:text="${c.name}"></option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-info"> update</button>
+    </form>
+</section>
+</body>
+</html>
